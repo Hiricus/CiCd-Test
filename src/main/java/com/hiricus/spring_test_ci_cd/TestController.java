@@ -12,4 +12,9 @@ public class TestController {
     public ResponseEntity<String> greet(@PathVariable String name) {
         return new ResponseEntity<>("Hello, " + name, HttpStatus.OK);
     }
+
+    @GetMapping("/api/test")
+    public ResponseEntity<String> test() {
+        return new ResponseEntity<>("Connection established", HttpStatus.OK);
+    }
 }
