@@ -33,5 +33,7 @@ jobs:
           pkill -f 'java -jar' || true
           mvn clean package -DskipTests
           nohup java -jar target/*.jar > app.log 2>&1 &
-          disown
           sleep 5
+          echo "::group::App logs"
+          tail -n 100 app.log
+          echo "::endgroup::"
