@@ -28,15 +28,5 @@ jobs:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: echo $(whoami)
-#                echo "Current dir $(pwd)"
-#                ls -l
-#                echo "Checking Maven..."
-#                which mvn || echo "Maven not found"
-#                mvn -v || echo "Maven version not found"
-#
-#                echo "Building project..."
-#                mvn clean package -DskipTests || { echo 'Build failed'; exit 1; }
-#
-#                echo "Build complete. Listing target/:"
-#                ls -l target
+        script: cd ${{ secrets.REMOTE_PATH }}
+                mvn clean package -DskipTests
