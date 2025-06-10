@@ -28,12 +28,7 @@ jobs:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd ${{ secrets.REMOTE_PATH }}
-          pkill -f 'java -jar' || true
-          mvn clean package -DskipTests
-          nohup java -jar target/*.jar > app.log 2>&1 &
-          sleep 5
-          echo "::group::App logs"
-          tail -n 100 app.log
-          echo "::endgroup::"
+        script: cd ${{ secrets.REMOTE_PATH }}
+                pkill -f 'java -jar' || true
+                mvn clean package -DskipTests
+                nohup java -jar target/*.jar > app.log 2>&1 &
