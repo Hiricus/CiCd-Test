@@ -28,8 +28,7 @@ jobs:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: cd ${{ secrets.REMOTE_PATH }}
-#                echo $(whoami)
+        script: echo $(whoami)
 #                echo "Current dir $(pwd)"
 #                ls -l
 #                echo "Checking Maven..."
