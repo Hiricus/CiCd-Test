@@ -29,6 +29,15 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: cd ${{ secrets.REMOTE_PATH }}
-                pkill -f 'java -jar' || true
-                mvn clean package -DskipTests
-                nohup java -jar target/*.jar > app.log 2>&1 &
+                echo "WHOAMI - $(whoami)"
+                echo "Current dir - $(pwd)"
+                ls -l
+                echo "Checking Maven..."
+                which mvn || echo "Maven not found"
+                mvn -v || echo "Maven version not found"
+                  
+                echo "Building project..."
+                mvn clean package -DskipTests || { echo 'Build failed'; exit 1; }
+                  
+                echo "Build complete. Listing target/:"
+                ls -l target
