@@ -29,8 +29,8 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: cd ${{ secrets.REMOTE_PATH }}
-                echo "WHOAMI - $(whoami)"
-                echo "Current dir - $(pwd)"
+                echo "WHOAMI: $(whoami)"
+                echo "Current dir: $(pwd)"
                 ls -l
                 echo "Checking Maven..."
                 which mvn || echo "Maven not found"
