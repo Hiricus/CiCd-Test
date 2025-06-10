@@ -29,6 +29,6 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-                cd ${{ secrets.REMOTE_PATH }}
-                /opt/maven/bin/mvn clean package -DskipTests
-                nohup /usr/bin/java -jar target/*.jar > app.log 2>&1
+                which mvn
+                which java
+                which pkill
