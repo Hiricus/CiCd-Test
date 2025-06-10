@@ -32,3 +32,5 @@ jobs:
                 which mvn
                 which java
                 which pkill
+                which nohup
+                which setsid
