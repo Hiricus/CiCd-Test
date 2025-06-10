@@ -29,5 +29,6 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
+                export PATH=$PATH:/opt/maven/bin/mvn
                 cd ${{ secrets.REMOTE_PATH }}
-                mvn clean package -DskipTests
+                /opt/maven/bin/mvn clean package -DskipTests
