@@ -29,9 +29,9 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-                export PATH=$PATH:/usr/bin/java
-                export PATH=$PATH:/opt/maven/bin/mvn
+#                export PATH=$PATH:/usr/bin/java
+#                export PATH=$PATH:/opt/maven/bin/mvn
                 cd ${{ secrets.REMOTE_PATH }}
                 pkill -f 'java -jar' || true
-                mvn clean package -DskipTests
-                setsid nohup java -jar target/*.jar > app.log 2>&1 < /dev/null &
+                /opt/maven/bin/mvn clean package -DskipTests
+                nohup /usr/bin/java -jar target/*.jar > app.log 2>&1
