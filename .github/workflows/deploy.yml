@@ -30,5 +30,10 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
                 export PATH=$PATH:/opt/maven/bin/mvn
-                cd ${{ secrets.REMOTE_PATH }}
-                /opt/maven/bin/mvn clean package -DskipTests
+                export PATH=$PATH:/usr/bin/java
+                cd ${{ secrets.REMOTE_PROJECT_DIR }}
+                pkill -f 'java -jar' || true
+                mvn clean package -DskipTests
+                nohup java -jar target/*.jar > app.log 2>&1 &
+                disown
+                sleep 5
