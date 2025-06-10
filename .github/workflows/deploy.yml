@@ -31,7 +31,7 @@ jobs:
         script: |
                 export PATH=$PATH:/usr/bin/java
                 export PATH=$PATH:/opt/maven/bin/mvn
-                cd ${{ secrets.REMOTE_PROJECT_DIR }}
+                cd ${{ secrets.REMOTE_HOST }}
                 pkill -f 'java -jar' || true
                 mvn clean package -DskipTests
                 nohup java -jar target/*.jar > app.log 2>&1 &
