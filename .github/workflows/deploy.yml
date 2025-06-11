@@ -31,4 +31,4 @@ jobs:
         script: |
                 cd ${{ secrets.REMOTE_PATH }}
                 /opt/maven/bin/mvn clean package -DskipTests
-                /usr/bin/nohup /usr/bin/java -jar target/*.jar > app.log 2>&1 &
+                /usr/bin/java -jar target/*.jar
