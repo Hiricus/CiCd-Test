@@ -30,6 +30,5 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
                 cd ${{ secrets.REMOTE_PATH }}
-                /usr/bin/pkill -f 'java -jar' || true
                 /opt/maven/bin/mvn clean package -DskipTests
                 /usr/bin/nohup /usr/bin/java -jar target/*.jar > app.log 2>&1 &
