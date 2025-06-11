@@ -12,15 +12,6 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
-    - name: Copy project to server
-      uses: appleboy/scp-action@v0.1.4
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "."
-        target: ${{ secrets.REMOTE_PATH }}
-        rm: true
 
     - name: Stop app if already running
       continue-on-error: true
@@ -31,7 +22,17 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           /usr/bin/pkill -f 'java -jar' || true
+              
 
+    - name: Copy project to server
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "."
+        target: ${{ secrets.REMOTE_PATH }}
+        rm: true
 
     - name: Build app on remote server
       uses: appleboy/ssh-action@v1.0.3
