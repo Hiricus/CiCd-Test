@@ -41,7 +41,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
                 cd ${{ secrets.REMOTE_PATH }}
-                /opt/maven/bin/mvn clean package -DskipTests -X
+                /opt/maven/bin/mvn clean package -DskipTests
 
     - name: Run app on remote server
       uses: appleboy/ssh-action@v1.0.3
@@ -51,4 +51,4 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
                 cd ${{ secrets.REMOTE_PATH }}
-                /usr/bin/java -jar target/*.jar
+                nohup /usr/bin/java -jar target/*.jar > app.log 2>&1 &
