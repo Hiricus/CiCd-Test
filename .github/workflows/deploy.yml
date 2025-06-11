@@ -32,6 +32,7 @@ jobs:
         script: |
           /usr/bin/pkill -f 'java -jar' || true
 
+
     - name: Build app on remote server
       uses: appleboy/ssh-action@v1.0.3
       with:
