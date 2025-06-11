@@ -32,4 +32,4 @@ jobs:
                 cd ${{ secrets.REMOTE_PATH }}
                 /usr/bin/pkill -f 'java -jar' || true
                 /opt/maven/bin/mvn clean package -DskipTests
-                /usr/bin/setsid /usr/bin/nohup /usr/bin/java -jar target/*.jar > app.log 2>&1 < /dev/null &
+                /usr/bin/nohup /usr/bin/java -jar target/*.jar > app.log 2>&1 &
